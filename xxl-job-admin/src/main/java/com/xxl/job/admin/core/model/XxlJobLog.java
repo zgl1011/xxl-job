@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class XxlJobLog {
 	
-	private int id;
+	private long id;
 	
 	// job info
 	private int jobGroup;
@@ -18,6 +18,7 @@ public class XxlJobLog {
 	private String executorAddress;
 	private String executorHandler;
 	private String executorParam;
+	private String executorShardingParam;
 	private int executorFailRetryCount;
 	
 	// trigger info
@@ -30,11 +31,14 @@ public class XxlJobLog {
 	private int handleCode;
 	private String handleMsg;
 
-	public int getId() {
+	// alarm info
+	private int alarmStatus;
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -78,6 +82,14 @@ public class XxlJobLog {
 		this.executorParam = executorParam;
 	}
 
+	public String getExecutorShardingParam() {
+		return executorShardingParam;
+	}
+
+	public void setExecutorShardingParam(String executorShardingParam) {
+		this.executorShardingParam = executorShardingParam;
+	}
+
 	public int getExecutorFailRetryCount() {
 		return executorFailRetryCount;
 	}
@@ -107,10 +119,6 @@ public class XxlJobLog {
 	}
 
 	public void setTriggerMsg(String triggerMsg) {
-		// plugin
-		if (triggerMsg!=null && triggerMsg.length()>2000) {
-			triggerMsg = triggerMsg.substring(0, 2000);
-		}
 		this.triggerMsg = triggerMsg;
 	}
 
@@ -135,10 +143,15 @@ public class XxlJobLog {
 	}
 
 	public void setHandleMsg(String handleMsg) {
-		// plugin
-		if (handleMsg!=null && handleMsg.length()>2000) {
-			handleMsg = handleMsg.substring(0, 2000);
-		}
 		this.handleMsg = handleMsg;
 	}
+
+	public int getAlarmStatus() {
+		return alarmStatus;
+	}
+
+	public void setAlarmStatus(int alarmStatus) {
+		this.alarmStatus = alarmStatus;
+	}
+
 }
